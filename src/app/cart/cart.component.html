@@ -1,0 +1,94 @@
+
+  <div class="card my-5 mx-3">
+    <div class="card-body">
+
+      <!-- Shopping Cart table -->
+      <div class="table-responsive">
+
+        <table class="table product-table">
+
+          <!-- Table head -->
+          <thead class="mdb-color lighten-5">
+            <tr>
+              <th></th>
+              <th class="font-weight-bold">
+                <strong>Produto</strong>
+              </th>
+              <th class="font-weight-bold">
+                <strong>Cor</strong>
+              </th>
+              <th class="font-weight-bold">
+                  <strong>Tamanho</strong>
+                </th>
+              <th class="font-weight-bold">
+                <strong>Escrita</strong>
+              </th>
+              <th class="font-weight-bold">
+                  <strong>Desenho</strong>
+                </th>
+              <th class="font-weight-bold">
+                <strong>Preço</strong>
+              </th>
+              <th></th>
+            </tr>
+          </thead>
+          <!-- /.Table head -->
+
+          <!-- Table body -->
+          <tbody>
+            <!-- First row -->
+            <tr *ngFor="let produto of items; index as i">
+              <th scope="row">
+                <img  *ngIf="produto.img"  id="imagem" [src]="produto.img" alt="Toalha" class="img-fluid z-depth-0">
+              </th>
+              <td>
+                <h5>
+                  <strong>{{produto.name}}</strong>
+                </h5>
+                <!--p--- class="text-muted">Apple</!--p--->
+              </td>
+              <td>{{produto.cor}}</td>            
+              <td>{{produto.size}}</td>
+              <td>{{produto.escrita}}</td>   
+              <td>{{produto.desenho}}</td>         
+              <td>{{produto.price}}</td>
+              <td>
+                <button type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top"
+                  title="Remove item" (click)="removerItem(i)">X
+                </button>
+              </td>
+            </tr>
+            <!-- /.First row -->
+
+            <!-- Fourth row -->
+            <tr>
+              <td colspan="5"></td>
+              <td>
+                <h4 class="mt-4">
+                  <strong>Total</strong>
+                </h4>
+              </td>
+              <td class="text-left">
+                <h4 class="mt-4" ([ngModel])="total">
+                  <strong>R$ {{total | number}}</strong>
+                </h4>
+              </td>
+              <td colspan="1" class="text-left mt-4">
+                <button class="button mt-4" (click)="clearCart()" [routerLink]="['/finalizar']">Finalizar <i class="material-icons"  style="color: white;">
+                    chevron_right
+                    </i></button>
+              </td>
+            </tr>
+            <!-- Fourth row -->
+
+          </tbody>
+          <!-- /.Table body -->
+
+        </table>
+
+      </div>
+      <!-- /.Shopping Cart table -->
+    </div>
+  </div>
+
+

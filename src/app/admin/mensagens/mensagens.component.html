@@ -1,0 +1,14 @@
+<mat-list *ngIf="mensagens">
+  <mat-list-item *ngFor="let mensagem of mensagens"
+  >
+    <mat-icon mat-list-icon>comment</mat-icon>
+    <h4 mat-line>{{ mensagem.email }}</h4>
+    <h5 mat-line>{{ mensagem.texto }}</h5>
+    <mat-divider></mat-divider>
+    <!--h4-- mat-line>{{ pedido.data.toDate() | date: "short" }}</!--h4-->
+    <!--<p mat-line>{{ folder.updated | date }}</p>-->
+  </mat-list-item>
+  <div *ngIf="mensagens.length == 0" class="alert alert-danger" role="alert">
+    Não há pedidos para listar!
+  </div>
+</mat-list>

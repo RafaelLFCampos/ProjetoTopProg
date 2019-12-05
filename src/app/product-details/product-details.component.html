@@ -1,0 +1,173 @@
+<!--<script>
+  window.onload = function() {
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+    context.font = "italic 40pt arial";
+    context.fillText("Canvas Tutorial.", 10, 100);
+  };
+</script>-->
+<div class="container">
+  <div class="card" *ngIf="produto" style="background-color: white;">
+    <div class="container-fliud">
+      <div class="wrapper row">
+        <div class="col-md-6">
+          <div class="preview-pic tab-content">
+            <div>
+              <img
+                *ngIf="produto.img"
+                id="imagem"
+                [src]="produto.img"
+                alt="Toalha"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="details col-md-6">
+          <h3 class="product-title" style="color: black;">
+            {{ produto.name }}
+          </h3>
+          <div class="mr-auto">
+            <ul class="rating p-0 m-0">
+              <i class="material-icons">star</i>
+              <i class="material-icons">star</i>
+              <i class="material-icons">star</i>
+              <i class="material-icons">star</i>
+              <i class="material-icons">star</i>
+            </ul>
+          </div>
+          <p class="product-description">{{ produto.description }}</p>
+          <h4 class="price">
+            <span style="color: black; text-shadow: #BDB76B 0px 1px 3px;"
+              >R$ {{ produto.price }}</span
+            >
+          </h4>
+          <br />
+          <div *ngIf="produto.personalizavel == 'true'">
+            <label style="background-color: #BDB76B; color:black; ">
+              Personalize
+            </label>
+            <mat-form-field>
+              <mat-label>Tamanho</mat-label>
+              <mat-select [(value)]="produto.size" required>
+                <mat-option value="P">P</mat-option>
+                <mat-option value="M">M</mat-option>
+                <mat-option value="G">G</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="product-configuration">
+              <!-- Product Color -->
+              <div class="product-color">
+                <span
+                  >Selecione uma cor:
+                  <span style="font-weight: bold;">{{
+                    produto.cor
+                  }}</span></span
+                >
+                <div>
+                  <button
+                    class="botao border border-secondary"
+                    id="color"
+                    (click)="trocarCor('toalhaAmarela.jpeg', 'Amarelo')"
+                    style="background: yellow;"
+                  ></button>
+                  <button
+                    class="botao border border-secondary"
+                    id="color"
+                    (click)="trocarCor('toalhaAzul.jpeg', 'Azul')"
+                    style="background: #6495ED;"
+                  ></button>
+                  <button
+                    class="botao border border-secondary"
+                    id="color"
+                    (click)="trocarCor('toalhaCreme.jpeg', 'Creme')"
+                    style="background: #fffdd0;"
+                  ></button>
+                </div>
+                <div>
+                  <div *ngIf="valor != ''"></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <input
+                required
+                type="text"
+                placeholder="Digite a escrita"
+                [(ngModel)]="produto.escrita"
+              />
+              <p>
+                <span style="font-weight: bold;">{{ produto.escrita }}</span>
+              </p>
+            </div>
+            <div>
+              <span
+                >Selecione um desenho:
+                <span *ngIf="produto.desenho" style="font-weight: bold;">{{
+                  produto.desenho
+                }}</span>
+              </span>
+
+              <div>
+                <button
+                  class="botao border border-secondary"
+                  (click)="trocarDesenho('des1.png', 'Lindinha')"
+                  style="background-image: url(./../../../assets/desenhos/des1.png);"
+                ></button>
+                <button
+                  class="botao border border-secondary"
+                  (click)="trocarDesenho('des2.png', 'Urso')"
+                  style="background-image: url(./../../../assets/desenhos/des2.png);"
+                ></button>
+                <button
+                  class="botao border border-secondary"
+                  (click)="trocarDesenho('des3.png', 'CapAmerica')"
+                  style="background-image: url(./../../../assets/desenhos/des3.png);"
+                ></button>
+              </div>
+            </div>
+            <br />
+          </div>
+          <div class="action">
+            <button
+              class="add-to-cart btn btn-default"
+              type="button"
+              (click)="addToCart(produto)"
+            >
+              Comprar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+<div class="row align-items-center">
+  <div class="col-md-auto">
+    <h2>Detalhes do Produto</h2>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row align-items-center">
+    <mat-card class="example-card" *ngIf="produto">
+      <h3>{{ produto.name }}</h3>
+      <img mat-card-image *ngIf="produto.img" [src]="produto.img" alt="Toalha" />
+      <mat-card-content>
+        <p>{{ produto.description }} {{ produto.size }}</p>
+        <h4>R$ {{ produto.price }}</h4>
+      </mat-card-content>
+      <button class="btn btn-primary" (click)="addToCart(produto)">Comprar</button>
+    </mat-card>
+  </div>
+
+  <canvas
+    id="myCanvas"
+    width="200"
+    height="100"
+    style="border:1px solid #d3d3d3;"
+  >
+    Your browser does not support the HTML5 canvas tag.</canvas
+  >
+ 
+</div>
+-->

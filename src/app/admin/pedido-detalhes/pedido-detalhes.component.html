@@ -1,0 +1,110 @@
+<div class="card my-5 mx-3" *ngIf="pedido">
+  <br />
+  <div class="d-flex justify-content-center">
+    <h5>
+      Pedido ID: <strong>{{ pedidoId }}</strong>
+    </h5>
+  </div>
+  <div class="card-body">
+    <!-- Shopping Cart table -->
+    <div class="table-responsive">
+      <table class="table product-table">
+        <!-- Table head -->
+        <thead class="mdb-color lighten-5">
+          <tr>
+            <th></th>
+            <th class="font-weight-bold">
+              <strong>Produto</strong>
+            </th>
+            <th class="font-weight-bold">
+              <strong>Cor</strong>
+            </th>
+            <th class="font-weight-bold">
+              <strong>Tamanho</strong>
+            </th>
+            <th class="font-weight-bold">
+              <strong>Escrita</strong>
+            </th>
+            <th class="font-weight-bold">
+              <strong>Desenho</strong>
+            </th>
+            <th class="font-weight-bold">
+              <strong>Preço</strong>
+            </th>
+          </tr>
+        </thead>
+        <!-- /.Table head -->
+
+        <!-- Table body -->
+        <tbody>
+          <!-- First row -->
+          <tr *ngFor="let produto of pedido.cart; index as i">
+            <th scope="row" class="text-center">
+              <img
+                *ngIf="produto.img"
+                id="imagem"
+                [src]="produto.img"
+                alt="Toalha"
+                class="img-fluid z-depth-0"
+              />
+            </th>
+            <td>
+              <h5>
+                <strong>{{ produto.name }}</strong>
+              </h5>
+              <!--p--- class="text-muted">Apple</!--p--->
+            </td>
+            <td>{{ produto.cor }}</td>
+            <td>{{ produto.size }}</td>
+            <td>{{ produto.escrita }}</td>
+            <td>{{ produto.desenho }}</td>
+            <td>{{ produto.price }}</td>
+          </tr>
+          <!-- /.First row -->
+
+          <!-- Fourth row -->
+          <tr>
+            <td colspan="1" class="text-right">
+              <mat-form-field class="mt-3">
+                <mat-label>Status Pedido</mat-label>
+                <mat-select [(value)]="selected">
+                  <mat-option value="Aguardando Pagamento"
+                    >Aguardando Pagamento</mat-option
+                  >
+                  <mat-option value="Pagamento Confirmado"
+                    >Pagamento Confirmado</mat-option
+                  >
+                  <mat-option value="Preparando">Preparando</mat-option>
+                  <mat-option value="Em Transporte">Em Transporte</mat-option>
+                  <mat-option value="Entregue">Entregue</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td>
+              <button class="button mt-4" (click)="atualizar()">
+                Atualizar Status
+              </button>
+            </td>
+            <td colspan="3">
+
+            </td>
+            <td>
+              <h4 class="mt-4">
+                <strong>Total</strong>
+              </h4>
+            </td>
+            <td class="text-left">
+              <h4 class="mt-4" ([ngModel])="(total)">
+                <strong>R$ {{ pedido.total | number }}</strong>
+              </h4>
+            </td>
+            <td colspan="2"></td>
+          </tr>
+          <!-- Fourth row -->
+        </tbody>
+        <!-- /.Table body -->
+      </table>
+    </div>
+    <!-- /.Shopping Cart table -->
+  </div>
+</div>

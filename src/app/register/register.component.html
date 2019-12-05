@@ -1,0 +1,146 @@
+<div class="container" *ngIf="!checkingUser">
+<div class="col">
+    <h4 class="mb-3">Continue o registro...</h4>
+    <hr class="mb-4">
+    <form class="needs-validation" novalidate="">
+      <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="inputCPF">CPF</label>
+            <input type="text" class="form-control" id="inputCPF" placeholder="12345678900" [(ngModel)]="cpf" [ngModelOptions]="{standalone: true}" required>
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="inputFone" class="control-label">Telefone</label>
+            <input type="text" class="form-control" id="inputFone" placeholder="999999999" [(ngModel)]="telefone" [ngModelOptions]="{standalone: true}"required>
+            <div class="help-block with-errors"></div>
+          </div>
+          
+      </div>
+      <div class="mb-3">
+        <label for="address">Endereço</label>
+        <input type="text" class="form-control" id="address" placeholder="Av. Monteiro Lobato nº 15" [(ngModel)]="endereco" [ngModelOptions]="{standalone: true}"required="">
+        <div class="invalid-feedback">
+          Por favor insira seu endereço de entrega.
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 mb-3">
+          <label for="country">País</label>
+          <select class="custom-select d-block w-100" id="country" [(ngModel)]="pais" [ngModelOptions]="{standalone: true}" required="">
+            <option value="Brasil">Brasil</option>
+          </select>
+          <div class="invalid-feedback">
+            Informe um país válido
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="state">Estado</label>
+          <select class="custom-select d-block w-100" id="state" [(ngModel)]="estado" [ngModelOptions]="{standalone: true}" required="">
+            <option value="Ponta Grossa">Ponta Grossa</option>
+            <option value="São Paulo">São Paulo</option>
+          </select>
+          <div class="invalid-feedback">
+            Informe um estado válido.
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="zip">CEP</label>
+          <input type="text" class="form-control" id="zip" placeholder="84010260" [(ngModel)]="cep" [ngModelOptions]="{standalone: true}" required="">
+          <div class="invalid-feedback">
+            Informe um CEP válido.
+          </div>
+        </div>
+      </div>
+      <hr class="mb-4">
+      <!--
+      <h4 class="mb-3">Pagamento</h4>
+
+      <div class="d-block my-3">
+        <div class="custom-control custom-radio">
+          <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+          <label class="custom-control-label" for="credit">Cartão de Crédito</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
+          <label class="custom-control-label" for="debit">Cartão de Débito</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
+          <label class="custom-control-label" for="paypal">PayPal</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="cc-name">Nome igual ao do cartão</label>
+          <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+          <small class="text-muted">Nome completo como exibido no cartão.</small>
+          <div class="invalid-feedback">
+            Nome do cartão é obrigatório.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="cc-number">Credit card number</label>
+          <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+          <div class="invalid-feedback">
+            É necessário o número do cartão de crédito
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 mb-3">
+          <label for="cc-expiration">Data de Vencimento</label>
+          <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+          <div class="invalid-feedback">
+            Data de Vencimento é necessária.
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="cc-cvv">CVV</label>
+          <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+          <div class="invalid-feedback">
+            Códido de segurança obrigatório.
+          </div>
+        </div>
+      </div>
+      <hr class="mb-4">
+      -->
+      <button class="btn btn-lg btn-block" style="color:black; background-color: #BDB76B;"  (click)="adicionarDados()">
+        <div class="spinner-border" style="color:black;" role="status" *ngIf="showLoading">
+            <span class="sr-only">Carregando...</span>
+        </div>
+        <label *ngIf="!showLoading" style="color: black; font-size: 15px;">Salvar Dados</label>
+      </button>
+    </form>
+    <div class="spinner-border" role="status" *ngIf="checkingUser">
+      <span class="sr-only">Carregando...</span>
+    </div>
+  </div>
+</div>
+<!--
+<div class="container" *ngIf="!checkingUser">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Preencha os dados para finalizar o cadastro</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <input matInput placeholder="Digite seu CPF" [(ngModel)]="cpf" />
+      <input matInput placeholder="Digite seu Endereço" [(ngModel)]="endereco" />
+      <input matInput placeholder="Digite seu telefone" [(ngModel)]="telefone" />
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button class="button" (click)="adicionarDados()">
+        Registrar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<div class="loading" *ngIf="checkingUser">
+  <mat-progress-spinner
+    *ngIf="showLoading"
+    class="example-margin"
+    color="primary"
+    mode="determinate"
+    value="50"
+  ></mat-progress-spinner>
+</div>
+-->

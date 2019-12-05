@@ -1,0 +1,22 @@
+<mat-tab-group mat-align-tabs="center" [color]="'warn'">
+    <mat-tab label="Histórico de Pedidos" class="demo-tab-content">
+        <mat-list>
+            <mat-list-item
+              *ngFor="let pedido of pedidos" class="col-12">
+              <mat-icon mat-list-icon style="padding-left: 120px;">assignment</mat-icon>
+              <h4 mat-line>{{ pedido.id }}</h4>
+              <h5 mat-line><strong>{{ pedido.status }}</strong></h5>
+              <mat-divider></mat-divider>
+              <div class="col-4">
+                  {{ pedido.data.toDate() | date: 'medium' }}
+              </div>
+            </mat-list-item>
+            <div *ngIf="pedidos.length == 0" class="alert alert-danger" role="alert">
+                Não há pedidos para listar!
+            </div>
+        </mat-list>
+    </mat-tab>
+    <mat-tab label="Dados"><app-user-dados></app-user-dados></mat-tab>
+    <mat-tab label="Enviar Mensagem"><app-user-mensagem></app-user-mensagem></mat-tab>
+  </mat-tab-group>
+  

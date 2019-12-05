@@ -1,0 +1,17 @@
+mat-card{
+  display: inline-block;
+}
+
+.example-card {
+max-width: 400px;
+margin: 20px;
+
+}
+
+.example-header-image {
+background-size: cover;
+}
+
+img{
+  height: 50px;
+}

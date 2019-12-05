@@ -1,0 +1,106 @@
+<div class="container" *ngIf="produto">
+  <div class="col">
+    <br /><br />
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="inputNome">Nome do Produto</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="produto.name"
+          required
+        />
+        <div class="help-block with-errors"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="inputCor" class="control-label">Cor</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="produto.cor"
+          [ngModelOptions]="{ standalone: true }"
+          required
+        />
+        <div class="help-block with-errors"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="inputDescricao">Descrição</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="produto.description"
+          required
+        />
+        <div class="help-block with-errors"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="inputPreco" class="control-label">Preço</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="produto.price"
+          [ngModelOptions]="{ standalone: true }"
+          required
+        />
+        <div class="help-block with-errors"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="inputImg">Imagem</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="produto.img"
+          required
+        />
+        <div class="help-block with-errors"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="exampleFormControlSelect1">É Personálizável?</label>
+        <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="produto.personalizavel">
+          <option value="true">Sim</option>
+          <option value="false">Não</option>
+        </select>
+        <div class="help-block with-errors"></div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mb-5">
+      <button
+        class="btn btn-lg mr-3"
+        (click)="salvarProduto()"
+        style="color:black; background-color: #BDB76B;"
+      >
+        <div class="spinner-border" role="status" *ngIf="showLoading">
+          <span class="sr-only">Carregando...</span>
+        </div>
+        <label *ngIf="!showLoading" style="color: black; font-size: 15px;"
+          >Salvar Dados</label
+        >
+      </button>
+
+      <button
+        class="btn btn-lg"
+        *ngIf="produtoId"
+        (click)="deletarProduto(produtoId)"
+        style="color: white; background-color: black;"
+      >
+        <div
+          class="spinner-border"
+          style="color:white;"
+          role="status"
+          *ngIf="showLoadingRegister"
+        >
+          <span class="sr-only">Carregando...</span>
+        </div>
+        <label
+          *ngIf="!showLoadingRegister"
+          style="color: white; font-size: 15px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"
+          >Deletar Produto</label
+        >
+      </button>
+    </div>
+  </div>
+</div>

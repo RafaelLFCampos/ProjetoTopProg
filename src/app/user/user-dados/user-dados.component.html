@@ -1,0 +1,116 @@
+<div class="container" *ngIf="dados">
+  <div class="col">
+      <br><br>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="inputCPF">CPF</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputCPF"
+            placeholder="12345678900"
+            [(ngModel)]="dados.cpf"
+            required
+          />
+          <div class="help-block with-errors"></div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="inputFone" class="control-label">Telefone</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputFone"
+            placeholder="999999999"
+            [(ngModel)]="dados.telefone"
+            [ngModelOptions]="{ standalone: true }"
+            required
+          />
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="address">Endereço</label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          placeholder="Av. Monteiro Lobato nº 15"
+          [(ngModel)]="dados.endereco"
+          [ngModelOptions]="{ standalone: true }"
+          required=""
+        />
+        <div class="invalid-feedback">
+          Por favor insira seu endereço de entrega.
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 mb-3">
+          <label for="country">País</label>
+          <select
+            class="custom-select d-block w-100"
+            id="country"
+            [(ngModel)]="dados.pais"
+            [ngModelOptions]="{ standalone: true }"
+            required=""
+          >
+            <option value="Brasil">Brasil</option>
+          </select>
+          <div class="invalid-feedback">
+            Informe um país válido
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="state">Estado</label>
+          <select
+            class="custom-select d-block w-100"
+            id="state"
+            [(ngModel)]="dados.estado"
+            [ngModelOptions]="{ standalone: true }"
+            required=""
+          >
+            <option value="Ponta Grossa">Ponta Grossa</option>
+            <option value="São Paulo">São Paulo</option>
+          </select>
+          <div class="invalid-feedback">
+            Informe um estado válido.
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="zip">CEP</label>
+          <input
+            type="text"
+            class="form-control"
+            id="zip"
+            placeholder="84010260"
+            [(ngModel)]="dados.cep"
+            [ngModelOptions]="{ standalone: true }"
+            required=""
+          />
+          <div class="invalid-feedback">
+            Informe um CEP válido.
+          </div>
+        </div>
+      </div>
+      <hr class="mb-4" />
+      <button
+        class="btn btn-lg btn-block"
+        style="color:black; background-color: #BDB76B;"
+        (click)="alterarDados()"
+      >
+        <div
+          class="spinner-border"
+          style="color:black;"
+          role="status"
+          *ngIf="showLoading"
+        >
+          <span class="sr-only">Carregando...</span>
+        </div>
+        <label *ngIf="!showLoading" style="color: black; font-size: 15px;"
+          >Salvar Dados</label
+        >
+      </button>
+    <div class="spinner-border" role="status" *ngIf="checkingUser">
+      <span class="sr-only">Carregando...</span>
+    </div>
+  </div>
+</div>

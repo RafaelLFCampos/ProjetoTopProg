@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="col">
+    <br /><br />
+    <div class="row">
+      <h5>Envie uma mensagem ao vendedor</h5>
+
+      <textarea
+        class="form-control"
+        id="txtArea"
+        rows="3"
+        [(ngModel)]="texto"
+      ></textarea>
+    </div>
+    <br>
+    <button
+        class="btn btn-lg btn-block"
+        style="color:black; background-color: #BDB76B;"
+        (click)="enviarMensagem()"
+      >
+        <div
+          class="spinner-border"
+          style="color:black;"
+          role="status"
+          *ngIf="showLoading"
+        >
+          <span class="sr-only">Carregando...</span>
+        </div>
+        <label *ngIf="!showLoading" style="color: black; font-size: 15px;"
+          >Enviar mensagem</label
+        >
+      </button>
+  </div>
+</div>

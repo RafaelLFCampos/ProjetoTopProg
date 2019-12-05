@@ -1,0 +1,27 @@
+<!---<div *ngFor="let pedido of pedidos">
+  <label>ID do pedido: {{ pedido.id }}</label>
+  <div *ngFor="let item of pedido.cart">
+    <label>Itens: {{ item.name }}</label>
+  </div>
+  <button>Editar</button>
+</div>
+--->
+<mat-list>
+  <mat-list-item
+    *ngFor="let pedido of pedidos"
+    [routerLink]="['/adminPedido', pedido.id]"
+  >
+    <mat-icon mat-list-icon style="padding-left: 120px;">assignment</mat-icon>
+    <h4 mat-line>{{ pedido.id }}</h4>
+    <h5 mat-line><strong>{{ pedido.status }}</strong></h5>
+    <mat-divider></mat-divider>
+
+    <div class="col-4">
+      {{ pedido.data.toDate() | date: "medium" }}
+    </div>
+    <!--<p mat-line>{{ folder.updated | date }}</p>-->
+  </mat-list-item>
+  <div *ngIf="pedidos.length == 0" class="alert alert-danger" role="alert">
+    Não há pedidos para listar!
+  </div>
+</mat-list>

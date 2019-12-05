@@ -1,0 +1,30 @@
+
+<div id="left">
+  <a [routerLink]="['/']">
+  <img src="../../assets/img-top-bar/logo.png" style="width: auto;"/>
+  
+  </a>
+</div>
+<div id="right">
+  <div id="cart">
+    <a [matBadge]="qtdItens" matBadgeColor="warn" [routerLink]="['/cart']" class="button fancy-button" style="height: 36px;"
+      ><i class="material-icons">shopping_cart</i></a
+    >
+  </div>
+
+  <div id="cart" *ngIf="logado">
+    <a [routerLink]="['/user']" class="button fancy-button" style="height: 36px;"
+      ><i class="material-icons">account_circle</i></a
+    >
+  </div>
+
+  <div id="buttons">
+    <button mat-raised-button *ngIf="!logado" [routerLink]="['/login']">
+      Login
+    </button>
+
+    <button mat-raised-button class="button" *ngIf="logado" (click)="logout()">
+      Logout
+    </button>
+  </div>
+</div>

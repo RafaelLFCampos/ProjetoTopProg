@@ -1,0 +1,77 @@
+<div class="container my-5" *ngIf="!checkingUser">
+    <mat-card class="example-card mt-5" style="width: 500px;">
+    <form class="form-signin" style="text-align: center;">
+      <img class="mb-4" src="../../assets/img-top-bar/logo.png" alt="Amarte Atelie" style="width: auto;">
+      <h1 class="h3 mb-3">Login</h1>
+      <label for="inputEmail" class="sr-only">Endereço de email</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Seu email" required="" autofocus="" [ngModelOptions]="{standalone: true}" [(ngModel)]="email">
+      <label for="inputPassword" class="sr-only">Senha</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="" [ngModelOptions]="{standalone: true}" [(ngModel)]="senha">
+      <br>
+      <button class="btn btn-lg mr-3" (click)="login()" style="color:black; background-color: #BDB76B;">
+          <div class="spinner-border" role="status" *ngIf="showLoading">
+              <span class="sr-only">Carregando...</span>
+          </div>
+          <label *ngIf="!showLoading" style="color: black; font-size: 15px;">Login</label>
+      </button>
+
+      <button class="btn btn-lg" (click)="registrar()" style="color: white; background-color: black;">
+        <div class="spinner-border" style="color:white;" role="status" *ngIf="showLoadingRegister">
+            <span class="sr-only">Carregando...</span>
+        </div>
+        <label *ngIf="!showLoadingRegister" style="color: white; font-size: 15px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Registrar</label>
+
+      </button>
+    </form>
+    <div class="spinner-border" role="status" *ngIf="checkingUser">
+      <span class="sr-only">Carregando...</span>
+    </div>
+</mat-card>
+</div>
+<!--
+<div class="container" *ngIf="!checkingUser">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <input matInput placeholder="Digite seu e-mail" [(ngModel)]="email" />
+      </div>
+      <div>
+        <input
+          matInput
+          placeholder="Digite sua senha"
+          [(ngModel)]="senha"
+          type="password"
+        />
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="login()">
+        <mat-progress-spinner
+          *ngIf="showLoading"
+          class="example-margin"
+          color="primary"
+          mode="indeterminate"
+          value="50"
+          diameter="35"
+        ></mat-progress-spinner>
+        <mat-label *ngIf="!showLoading">Login</mat-label>
+      </button>
+      <button mat-raised-button class="button" (click)="registrar()">
+        Registrar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<div class="loading" *ngIf="checkingUser">
+  <mat-progress-spinner
+    *ngIf="showLoading"
+    class="example-margin"
+    color="primary"
+    mode="determinate"
+    value="50"
+  ></mat-progress-spinner>
+</div>
+-->

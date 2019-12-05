@@ -1,0 +1,41 @@
+<mat-tab-group mat-align-tabs="center" [color]="'warn'">
+  <mat-tab label="Produtos">
+    <br><br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">ID</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Cor</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Imagem</th>
+          <th scope="col">Personalizável</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let produto of produtos; index as i">
+        <th scope="row">{{ i+1 }}</th>
+        <td>{{ produto.id }}</td>
+        <td>{{ produto.name }}</td>
+        <td>{{ produto.cor }}</td>
+        <td>{{ produto.description }}</td>
+        <td>{{ produto.price }}</td>
+        <td><img [src]="produto.img" alt="Toalha" /></td>
+        <td>{{ produto.personalizavel }}</td>
+        <td>
+          <button [routerLink]="['/adminProduto', produto.id]">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+    <div class="d-flex justify-content-center">
+      <button routerLink="/adminProduto">Adicionar Novo Produto</button>
+    </div>
+  </mat-tab>
+  <mat-tab label="Pedidos"><app-pedidos></app-pedidos></mat-tab>
+  <mat-tab label="Mensagens"><app-mensagens></app-mensagens></mat-tab>
+</mat-tab-group>
